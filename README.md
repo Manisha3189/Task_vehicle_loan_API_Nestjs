@@ -2,11 +2,11 @@
 
 
 node version: 18.20.2
-npm install
 database: 'sqlite'
 database_Name: 'vehicles.DB'
 
 #To Run the code in local Command
+npm install
 npm run start
 
 #Seed not included
