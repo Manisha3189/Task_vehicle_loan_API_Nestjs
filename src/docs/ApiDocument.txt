@@ -1,0 +1,312 @@
+
+node version :18.20.2
+npm install
+npm run start
+
+
+=============================== vahicle API Documentation ============================================
+
+
+Base URL=http://localhost:5000/api/vehicles
+Endpoints: /vehicles
+
+1.Get All Vehicles(http://localhost:5000/api/vehicles)
+Method: GET
+Endpoint: /vehicles
+Description: Retrieve a list of all vehicles.
+Response:
+   200 OK
+   Content: An array of vehicle objects example
+    [
+       {
+    "id": 1,
+    "VIN": "1HGCM82633A123456",
+    "make": "Honda",
+    "model": "Accord",
+    "year": 2020,
+    "mileage": 15000
+  },
+   ...
+]
+
+2. Get a Vehicle by ID(http://localhost:5000/api/vehicles/:id)
+Method: GET
+Endpoint: /vehicles/:id
+Description: Retrieve a specific vehicle by its ID.
+Parameters:
+id (path) - The ID of the vehicle to retrieve.
+Response:
+ 200 OK
+         Content: The vehicle object
+         {
+          "id": 1,
+           "VIN": "1HGCM82633A123456",
+           "make": "Honda",
+           "model": "Accord",
+            "year": 2020,
+           "mileage": 15000
+        }
+ 404
+     If the vehicle with the specified ID does not exist
+
+3. Create a New Vehicle(http://localhost:5000/api/vehicles)
+ Method: POST
+ Endpoint: /vehicles
+ Description: Create a new vehicle.
+ Request Body:
+ Content-Type: application/json
+ Schema:
+       {
+  "VIN": "1HGCM82633A123456",
+  "make": "Honda",
+  "model": "Accord",
+  "year": 2020,
+  "mileage": 15000
+}
+Response:
+   201 Created
+       Content: The created vehicle object.
+              {
+               "id": 1,
+               "VIN": "1HGCM82633A123456",
+               "make": "Honda",
+               "model": "Accord",
+               "year": 2020,
+               "mileage": 15000
+              }
+
+4. Update a Vehicle by ID(http://localhost:5000/api/vehicles/:id)
+Method: PUT
+Endpoint: /vehicles/:id
+Description: Update an existing vehicle by its ID.
+Parameters:
+id (path) - The ID of the vehicle to update.
+Request Body:
+Content-Type: application/json
+Schema:
+{
+  "VIN": "1HGCM82633A123456",
+  "make": "Honda",
+  "model": "Accord",
+  "year": 2020,
+  "mileage": 16000
+}
+Response:
+200 OK
+    Content: The updated vehicle object.
+     {
+        "id": 1,
+        "VIN": "1HGCM82633A123456",
+        "make": "Honda",
+        "model": "Accord",
+        "year": 2020,
+        "mileage": 16000
+     }
+404 Not Found
+   If the vehicle with the specified ID does not exist.
+
+5. Delete a Vehicle by ID(http://localhost:5000/api/vehicles/:id)
+Method: DELETE
+Endpoint: /vehicles/:id
+Description: Delete a vehicle by its ID.
+Parameters:
+id (path) - The ID of the vehicle to delete.
+Response:
+204 No Content
+Indicates that the vehicle was successfully deleted.
+404 Not Found
+If the vehicle with the specified ID does not exist.
+
+6. Valid Vehicle (http://localhost:5000/api/vehicles/valid)
+ Method: POST
+ Endpoint: /vehicles/valid
+ Description: check a valid vehicle.
+ Request Body:
+ Content-Type: application/json
+ Schema:
+       {
+  "vehicleId": "1HGCM82633A123456",
+}
+Response:
+   200 
+       Content: 
+       {
+          statusCode : 200,
+          message: Valid vehicle data,
+       }
+   401
+        Content: 
+       {
+          statusCode : 401,
+          message: Invalid vehicle data,
+       }       
+
+
+
+================================ Loan Api =======================================
+
+1.Get All loans(http://localhost:5000/api/loans)
+Method: GET
+Endpoint: /loans
+Description: Retrieve a list of all loans.
+Response:
+   200 OK
+   Content: An array of loan objects example
+    [
+             {
+    "vehicleId" : "1HGCM82633A123456",
+    "applicantName" : "kanndfdfan",
+    "applicantEmail" : "admfgin@123",
+    "applicantPhoneNumber" : "56778899909",
+    "applicantPhoneAddress": "jdfidifdf"
+     }
+   ...
+]
+
+2. Get a loan by ID(http://localhost:5000/api/loans/:id)
+Method: GET
+Endpoint: /loans/:id
+Description: Retrieve a specific loan by its ID.
+Parameters:
+id (path) - The ID of the loan to retrieve.
+Response:
+ 200 OK
+         Content: The loan object
+        
+        {
+    "vehicleId" : "1HGCM82633A123456",
+    "applicantName" : "kanndfdfan",
+    "applicantEmail" : "admfgin@123",
+    "applicantPhoneNumber" : "56778899909",
+    "applicantPhoneAddress": "jdfidifdf"
+}
+ 404
+     If the Loan with the specified ID does not exist
+
+3. Update a Vehicle by ID(http://localhost:5000/api/loans/:id)
+Method: PUT
+Endpoint: /loans/:id
+Description: Update an existing vehicle by its ID.
+Parameters:
+id (path) - The ID of the vehicle to update.
+Request Body:
+Content-Type: application/json
+Schema:
+{
+  "VIN": "1HGCM82633A123456",
+  "make": "Honda",
+  "model": "Accord",
+  "year": 2020,
+  "mileage": 16000
+}
+Response:
+200 OK
+    Content: The updated vehicle object.
+       {
+    "vehicleId" : "1HGCM82633A123456",
+    "applicantName" : "kanndfdfan",
+    "applicantEmail" : "admfgin@123",
+    "applicantPhoneNumber" : "56778899909",
+    "applicantPhoneAddress": "jdfidifdf"
+}
+404 Not Found
+   If the vehicle with the specified ID does not exist.
+
+
+4. Create a New loans(http://localhost:5000/api/loans/submission)
+ Method: POST
+ Endpoint: /loans/submission
+ Description: Create a new loan.
+ Request Body:
+ Content-Type: application/json
+ Schema:
+         {
+    "vehicleId" : "1HGCM82633A123456",
+    "applicantName" : "kanndfdfan",
+    "applicantEmail" : "admfgin@123",
+    "applicantPhoneNumber" : "56778899909",
+    "applicantPhoneAddress": "jdfidifdf"
+}
+Response:
+   201 Created
+       Content: The created loan object.
+               {
+              "messsage": "Your loan submitt successfully",
+              "statusCode": 201
+           }
+           401 
+       Content: 
+              {
+             "messsage": "Invalid data request",
+             "statusCode": 401
+   }
+   400 
+       Content :
+        {
+    "messsage": "loan not eligibility for applicant",
+    "statusCode": 401
+}
+
+5. Check loan(http://localhost:5000/api/loans/eligible)
+ Method: POST
+ Endpoint: /loans/eligible
+ Description: Check loan.
+ Request Body:
+ Content-Type: application/json
+ Schema:
+         {
+    "applicantPhoneNumber" : "56778899909",
+}
+Response:
+   200 Created
+       Content: The created loan object.
+              {
+    "messsage": "loan eligibility for applicant",
+    "statusCode": 200
+}
+
+   401 
+       Content: The created loan object.
+              {
+    "messsage": "loan not eligibility for applicant",
+    "statusCode": 401
+}
+
+
+
+================================= Data Model vehicle Object =================================================
+{
+  "id": 1,
+  "VIN": "string",
+  "make": "string",
+  "model": "string",
+  "year": 2020,
+  "mileage": 15000
+}
+
+Field Descriptions
+id: Unique identifier for the vehicle (auto-generated).
+VIN: Vehicle Identification Number, must be unique.
+make: Manufacturer of the vehicle (e.g., "Honda").
+model: Model of the vehicle (e.g., "Accord").
+year: Year of manufacture (e.g., 2020).
+mileage: Current mileage of the vehicle (in miles).
+
+
+==================================== Common Error Responses =========================================
+400 Bad Request: Indicates that the request was malformed or invalid.
+404 Not Found: Indicates that the specified resource could not be found.
+500 Internal Server Error: Indicates that an unexpected error occurred on the server.
+
+
+
+
+
+
+
+        
+
+
+
+
+
